@@ -69,9 +69,20 @@ describe('Lottery Contract', () => {
         from: accounts[0],
         value: 0
       });
+      assert(false); // verifies that code above failed (or test would fail)
+    } catch (err) {
+      assert(err); // varifies that the try block did fail and threw an error
+    }
+  });
+
+  it('only manager can call pickWinner', async () => {
+    try {
+      await lottery.methods.pickWinner().send({
+        from: accounts[1]
+      });
       assert(false);
     } catch (err) {
       assert(err);
     }
-  });
+  })
 });
