@@ -16,7 +16,7 @@ const deploy = async () => {
 
   // result is an instance of the contract
   const result = await new web3.eth.Contract(JSON.parse(interface))
-    .deploy({ data: '0x' + bytecode, arguments: ['Hi there!'] }) // added '0x' b/c failing otherwise w HDWalletProvider0.0.5
+    .deploy({ data: '0x' + bytecode }) // added '0x' b/c failing otherwise w HDWalletProvider0.0.5
     .send({ gas: '1000000', from: accounts[0] });
 
   console.log('Contract deployed to:', result.options.address);
